@@ -14,9 +14,13 @@ public class Main {
      * icyHot(-1, 120) → true
      * icyHot(2, 120) → false
      */
+
+    static final int TEMPERATURE_MIN = 0;
+    static final int TEMPERATURE_MAX = 100;
+
     public boolean icyHot(int temp1, int temp2) {
-        // TODO: write method body
-        return false;
+        return ((temp1 > TEMPERATURE_MAX && temp2 < TEMPERATURE_MIN)
+                || (temp1 < TEMPERATURE_MIN && temp2 > TEMPERATURE_MAX));
     }
 
     /**
@@ -26,9 +30,11 @@ public class Main {
      * in1020(21, 12) → true
      * in1020(8, 99) → false
      */
+    static final int NUMBER_MIN = 10;
+    static final int NUMBER_MAX = 20;
+
     public boolean in1020(int a, int b) {
-        // TODO: write method body
-        return false;
+        return ((a >= NUMBER_MIN && a <= NUMBER_MAX) || (b >= NUMBER_MIN && b <= NUMBER_MAX));
     }
 
     /**
@@ -39,9 +45,12 @@ public class Main {
      * hasTeen(20, 19, 10) → true
      * hasTeen(20, 10, 13) → true
      */
+    static final int TEEN_MIN = 13;
+    static final int TEEN_MAX = 19;
+
     public boolean hasTeen(int a, int b, int c) {
-        // TODO: write method body
-        return false;
+        return ((a >= TEEN_MIN && a <= TEEN_MAX) || (b >= TEEN_MIN && b <= TEEN_MAX)
+                || (c >= TEEN_MIN && c <= TEEN_MAX));
     }
 
     // ======== Boolean expressions ========
@@ -55,8 +64,7 @@ public class Main {
      * sleepIn(false, true) → true
      */
     public boolean sleepIn(boolean weekday, boolean vacation) {
-        // TODO: write method body
-        return false;
+        return !weekday || vacation;
     }
 
     /**
@@ -68,8 +76,7 @@ public class Main {
      * monkeyTrouble(true, false) → false
      */
     public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-        // TODO: write method body
-        return false;
+        return aSmile == bSmile;
     }
 
     /**
@@ -81,9 +88,12 @@ public class Main {
      * posNeg(-4, -5, true) → true
      */
     public boolean posNeg(int a, int b, boolean negative) {
-        // TODO: write method body
-        return false;
-    }
+        if (negative) {
+            return a < 0 && b < 0;
+        } else {
+            return (a < 0 && b > 0) || (a > 0 && b < 0);
+            }
+        }
 
     // ======== Loops and Arrays ========
 
@@ -95,8 +105,16 @@ public class Main {
      * arrayCount9([1, 9, 9, 3, 9]) → 3
      */
     public int arrayCount9(int[] nums) {
-        // TODO: write method body
-        return 0;
+        final int TARGET = 9;
+        int count = 0;
+
+        for (int num : nums) {
+            if (num == TARGET) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     /**
@@ -108,7 +126,17 @@ public class Main {
      * arrayFront9([1, 2, 3, 4, 5]) → false
      */
     public boolean arrayFront9(int[] nums) {
-        // TODO: write method body
+        final int TARGET = 9;
+        final int LIMIT = 4;
+
+        int i = 0;
+        while (i < nums.length && i < LIMIT) {
+            if (nums[i] == TARGET) {
+                return true;
+            }
+            i++;
+        }
+
         return false;
     }
 
@@ -120,7 +148,16 @@ public class Main {
      * array123([1, 1, 2, 1, 2, 3]) → true
      */
     public boolean array123(int[] nums) {
-        // TODO: write method body
+        final int ONE = 1;
+        final int TWO = 2;
+        final int THREE = 3;
+
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (nums[i] == ONE && nums[i + 1] == TWO && nums[i + 2] == THREE) {
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -134,8 +171,7 @@ public class Main {
      * helloName("X") → "Hello X!"
      */
     public String helloName(String name) {
-        // TODO: write method body
-        return null;
+        return "Hello " + name + "!";
     }
 
     /**
@@ -147,8 +183,15 @@ public class Main {
      * lastTwo("ab") → "ba"
      */
     public String lastTwo(String str) {
-        // TODO: write method body
-        return null;
+        if (str.length() < 2) {
+            return str;
+        }
+
+        String start = str.substring(0, str.length() - 2); // початок слова
+        char secondLast = str.charAt(str.length() - 2); // передостанній елемент
+        char last = str.charAt(str.length() - 1); // останній елемент
+
+        return start + last + secondLast;
     }
 
     /**
@@ -159,8 +202,8 @@ public class Main {
      * middleTwo("Practice") → "ct"
      */
     public String middleTwo(String str) {
-        // TODO: write method body
-        return null;
+        final int middleIndex = str.length() / 2;
+        return str.substring(middleIndex - 1, middleIndex + 1);
     }
 
 
